@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TweetDetailViewController: UIViewController {
     
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     
-    var user: String = ""
-    var tweet: String = ""
+    var tweetDataModel = TweetDataModel()
     
     var tweetBarButtonItem: UIBarButtonItem!
     var cancelBarButtonItem: UIBarButtonItem!
@@ -21,7 +21,7 @@ class TweetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayData()
-        
+        tweetTextView.delegate = self
         // ナビゲーションバーのボタン設定
         tweetBarButtonItem = UIBarButtonItem(title: "投稿する", style: .done, target: self, action: #selector(tweetBarButtonTapped(_:)))
         cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped(_:)))
@@ -33,14 +33,23 @@ class TweetDetailViewController: UIViewController {
     }
     
     func configure(tweetData: TweetDataModel) {
-        user = tweetData.user
-        tweet = tweetData.tweet
-        print("データは\(user)と\(tweet)です")
+        tweetDataModel.user = tweetData.user
+        tweetDataModel.tweet = tweetData.tweet
+        print("データは\(tweetDataModel.user)と\(tweetDataModel.tweet)です")
     }
     
     func displayData() {
-        userLabel.text = user
-        tweetTextView.text = tweet
+        userLabel.text = tweetDataModel.user
+        tweetTextView.text = tweetDataModel.tweet
+    }
+    
+    func saveData(with text: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            tweetDataModel.tweet = text
+            realm.add(tweetDataModel)
+        }
+        print(tweetDataModel.tweet)
     }
     
     @objc func tweetBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -52,6 +61,13 @@ class TweetDetailViewController: UIViewController {
     
     @objc func cancelBarButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension TweetDetailViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let updaedtext = tweetTextView.text ?? ""
+        saveData(with: updaedtext)
     }
 }
 
