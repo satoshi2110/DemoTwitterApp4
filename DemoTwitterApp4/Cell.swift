@@ -25,8 +25,18 @@ class Cell: UITableViewCell {
     }
     
     @IBAction func deleteButton(_ sender: UIButton) {
+        guard let tableView = self.superview as? UITableView,
+              let viewController = tableView.delegate as? HomeViewController,
+              let indexPath = tableView.indexPath(for: self) else { return }
+
+        viewController.deleteCell(at: indexPath)
     }
     
     @IBAction func editButton(_ sender: UIButton) {
+        guard let tableView = self.superview as? UITableView,
+              let viewController = tableView.delegate as? HomeViewController,
+              let indexPath = tableView.indexPath(for: self) else { return }
+
+        viewController.editCell(at: indexPath)
     }
 }
