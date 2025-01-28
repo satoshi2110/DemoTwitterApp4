@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4E050B4D8BC9F92446E98199 /* Pods_DemoTwitterApp4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B6CCEF78BBB747B5952D042 /* Pods_DemoTwitterApp4.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		4B6CCEF78BBB747B5952D042 /* Pods_DemoTwitterApp4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTwitterApp4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB6CB802D43365C001C71C8 /* DemoTwitterApp4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTwitterApp4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D47F68216157EF099E0A7B1 /* Pods-DemoTwitterApp4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTwitterApp4.debug.xcconfig"; path = "Target Support Files/Pods-DemoTwitterApp4/Pods-DemoTwitterApp4.debug.xcconfig"; sourceTree = "<group>"; };
+		E224769BDC041A2E05844FC2 /* Pods-DemoTwitterApp4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTwitterApp4.release.xcconfig"; path = "Target Support Files/Pods-DemoTwitterApp4/Pods-DemoTwitterApp4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E050B4D8BC9F92446E98199 /* Pods_DemoTwitterApp4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0458A2FC50C4DF751C6ECA3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D47F68216157EF099E0A7B1 /* Pods-DemoTwitterApp4.debug.xcconfig */,
+				E224769BDC041A2E05844FC2 /* Pods-DemoTwitterApp4.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4FB6CB772D43365C001C71C8 = {
 			isa = PBXGroup;
 			children = (
 				4FB6CB822D43365C001C71C8 /* DemoTwitterApp4 */,
 				4FB6CB812D43365C001C71C8 /* Products */,
+				0458A2FC50C4DF751C6ECA3F /* Pods */,
+				612D11D065E3E82C14162D2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +77,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		612D11D065E3E82C14162D2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B6CCEF78BBB747B5952D042 /* Pods_DemoTwitterApp4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FB6CB932D43365E001C71C8 /* Build configuration list for PBXNativeTarget "DemoTwitterApp4" */;
 			buildPhases = (
+				54E7A8B91664AB44E988A2E5 /* [CP] Check Pods Manifest.lock */,
 				4FB6CB7C2D43365C001C71C8 /* Sources */,
 				4FB6CB7D2D43365C001C71C8 /* Frameworks */,
 				4FB6CB7E2D43365C001C71C8 /* Resources */,
+				109A77D42FAC0CFEB9FA865B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				4FB6CB822D43365C001C71C8 /* DemoTwitterApp4 */,
 			);
 			name = DemoTwitterApp4;
-			packageProductDependencies = (
-			);
 			productName = DemoTwitterApp4;
 			productReference = 4FB6CB802D43365C001C71C8 /* DemoTwitterApp4.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +154,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		109A77D42FAC0CFEB9FA865B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoTwitterApp4/Pods-DemoTwitterApp4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoTwitterApp4/Pods-DemoTwitterApp4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoTwitterApp4/Pods-DemoTwitterApp4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54E7A8B91664AB44E988A2E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DemoTwitterApp4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4FB6CB7C2D43365C001C71C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,11 +209,13 @@
 /* Begin XCBuildConfiguration section */
 		4FB6CB942D43365E001C71C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D47F68216157EF099E0A7B1 /* Pods-DemoTwitterApp4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTwitterApp4/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -167,11 +238,13 @@
 		};
 		4FB6CB952D43365E001C71C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E224769BDC041A2E05844FC2 /* Pods-DemoTwitterApp4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTwitterApp4/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
