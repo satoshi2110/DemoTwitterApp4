@@ -50,8 +50,56 @@
             </objects>
             <point key="canvasLocation" x="-51.145038167938928" y="3.5211267605633805"/>
         </scene>
+        <!--Tweet Detail View Controller-->
+        <scene sceneID="FhC-tk-pht">
+            <objects>
+                <viewController storyboardIdentifier="TweetDetailViewController" id="Yxq-Kw-PKE" customClass="TweetDetailViewController" customModule="DemoTwitterApp4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W9l-LS-BX0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-QM-o9T">
+                                <rect key="frame" x="40" y="120" width="313" height="372"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLq-lN-HiA">
+                                <rect key="frame" x="20" y="79" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="12P-iS-6aV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="12P-iS-6aV" firstAttribute="bottom" secondItem="HEU-QM-o9T" secondAttribute="bottom" constant="326" id="CyW-MS-G57"/>
+                            <constraint firstItem="HEU-QM-o9T" firstAttribute="centerX" secondItem="W9l-LS-BX0" secondAttribute="centerX" id="HYu-wq-Hhv"/>
+                            <constraint firstItem="12P-iS-6aV" firstAttribute="trailing" secondItem="DLq-lN-HiA" secondAttribute="trailing" constant="20" id="I8u-4X-cm6"/>
+                            <constraint firstItem="12P-iS-6aV" firstAttribute="trailing" secondItem="HEU-QM-o9T" secondAttribute="trailing" constant="40" id="Kg7-JZ-Fsd"/>
+                            <constraint firstItem="DLq-lN-HiA" firstAttribute="top" secondItem="12P-iS-6aV" secondAttribute="top" constant="20" id="LgG-1Y-LZ3"/>
+                            <constraint firstItem="DLq-lN-HiA" firstAttribute="leading" secondItem="12P-iS-6aV" secondAttribute="leading" constant="20" id="d90-Ib-eJJ"/>
+                            <constraint firstItem="HEU-QM-o9T" firstAttribute="leading" secondItem="12P-iS-6aV" secondAttribute="leading" constant="40" id="xAv-A4-jGa"/>
+                            <constraint firstItem="HEU-QM-o9T" firstAttribute="top" secondItem="DLq-lN-HiA" secondAttribute="bottom" constant="20" id="yba-MB-XDw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tweetTextView" destination="HEU-QM-o9T" id="8lp-mh-bpO"/>
+                        <outlet property="userLabel" destination="DLq-lN-HiA" id="YXo-jH-Iog"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-34-F1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785.49618320610682" y="3.5211267605633805"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
