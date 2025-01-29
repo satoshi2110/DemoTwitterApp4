@@ -23,9 +23,7 @@ class HomeViewController: UIViewController {
     
     func setTweetData() {
         for i in 1...10 {
-            let tweetDataModel = TweetDataModel()
-            tweetDataModel.user = "ユーザー名"
-            tweetDataModel.tweet = "\(i)ツイート"
+            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート")
             tweetDataList.append(tweetDataModel)
         }
         print("データ: \(tweetDataList)")
@@ -52,9 +50,7 @@ class HomeViewController: UIViewController {
         let tweetDetailViewController = storyboard.instantiateViewController(withIdentifier: "TweetDetailViewController") as! TweetDetailViewController
 
         // 初期データを設定
-        let newTweetData = TweetDataModel()
-        newTweetData.user = "ユーザー名"
-        newTweetData.tweet = "新しいツイート"
+        let newTweetData = TweetDataModel(user: "ユーザー名", tweet: "新しいツイート")
         tweetDetailViewController.configure(tweetData: newTweetData)
 
         navigationController?.pushViewController(tweetDetailViewController, animated: true)

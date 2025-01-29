@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import RealmSwift
 
-class TweetDataModel: Object {
-    @Persisted var id: String = UUID().uuidString
-    @Persisted var user: String = ""
-    @Persisted var tweet: String = ""
+struct TweetDataModel {
+    var user: String
+    var tweet: String
 }
