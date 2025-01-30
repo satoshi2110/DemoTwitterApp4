@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -17,16 +18,20 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        setTweetData()
+        
         setupFloatingButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTweetData()
+        tableView.reloadData()
+    }
+    
     func setTweetData() {
-        for i in 1...10 {
-            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート")
-            tweetDataList.append(tweetDataModel)
-        }
-        print("データ: \(tweetDataList)")
+        let realm = try! Realm()
+        let result = realm.objects(TweetDataModel.self)
+        tweetDataList = Array(result)
     }
     func setupFloatingButton() {
         let floatingButton = UIButton(type: .system)
@@ -50,13 +55,20 @@ class HomeViewController: UIViewController {
         let tweetDetailViewController = storyboard.instantiateViewController(withIdentifier: "TweetDetailViewController") as! TweetDetailViewController
 
         // 初期データを設定
-        let newTweetData = TweetDataModel(user: "ユーザー名", tweet: "新しいツイート")
+        let newTweetData = TweetDataModel()
+        newTweetData.user = "ユーザー名"
+        newTweetData.tweet = "新しいツイート"
         tweetDetailViewController.configure(tweetData: newTweetData)
 
         navigationController?.pushViewController(tweetDetailViewController, animated: true)
     }
     
     func deleteCell(at indexPath: IndexPath) {
+        let realm = try! Realm()
+        let targetTweet = tweetDataList[indexPath.row]
+        try! realm.write {
+            realm.delete(targetTweet)
+        }
         tweetDataList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
