@@ -18,11 +18,13 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         setTweetData()
+        
     }
+    
     
     func setTweetData() {
         for i in 1...5 {
-            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート")
+            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート")
             tweetDataList.append(tweetDataModel)
         }
         print("データ: \(tweetDataList)")
@@ -38,9 +40,10 @@ extension HomeViewController: UITableViewDataSource {
         let tweetDataModel: TweetDataModel = tweetDataList[indexPath.row]
         cell.tweet.text = tweetDataModel.tweet
         cell.user.text = tweetDataModel.user
-
+        
         return cell
     }
+    
 }
 extension HomeViewController: UITableViewDelegate {
     
