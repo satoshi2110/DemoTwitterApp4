@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         setTweetData()
     }
     
@@ -23,8 +25,8 @@ class HomeViewController: UIViewController {
             let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート")
             tweetDataList.append(tweetDataModel)
         }
+        print("データ: \(tweetDataList)")
     }
-    
 }
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,11 +34,14 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! Cell
         let tweetDataModel: TweetDataModel = tweetDataList[indexPath.row]
-        cell.textLabel?.text = tweetDataModel.tweet
+        cell.tweet.text = tweetDataModel.tweet
+        cell.user.text = tweetDataModel.user
+
         return cell
     }
-    
+}
+extension HomeViewController: UITableViewDelegate {
     
 }
