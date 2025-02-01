@@ -23,8 +23,8 @@ class HomeViewController: UIViewController {
     
     
     func setTweetData() {
-        for i in 1...5 {
-            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート\(i)ツイート")
+        for i in 1...10 {
+            let tweetDataModel = TweetDataModel(user: "ユーザー名", tweet: "\(i)ツイート")
             tweetDataList.append(tweetDataModel)
         }
         print("データ: \(tweetDataList)")
@@ -46,5 +46,15 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 extension HomeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storybord = UIStoryboard(name: "Main", bundle: nil)
+        let tweetDetailViewController = storybord.instantiateViewController(withIdentifier: "TweetDetailViewController") as! TweetDetailViewController
+//        データを送る
+        let tweetData = tweetDataList[indexPath.row]
+        tweetDetailViewController.configure(tweetData: tweetData)
+//        選択したセルを消す
+        tableView.deselectRow(at: indexPath, animated: true)
+//        移動
+        navigationController?.pushViewController(tweetDetailViewController, animated: true)
+    }
 }
