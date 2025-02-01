@@ -56,6 +56,20 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(tweetDetailViewController, animated: true)
     }
     
+    func deleteCell(at indexPath: IndexPath) {
+        tweetDataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+
+    func editCell(at indexPath: IndexPath) {
+        let tweetData = tweetDataList[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tweetDetailViewController = storyboard.instantiateViewController(withIdentifier: "TweetDetailViewController") as! TweetDetailViewController
+
+        tweetDetailViewController.configure(tweetData: tweetData)
+        navigationController?.pushViewController(tweetDetailViewController, animated: true)
+    }
+    
 }
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
