@@ -18,6 +18,8 @@ class TweetDetailViewController: UIViewController {
     var tweetBarButtonItem: UIBarButtonItem!
     var cancelBarButtonItem: UIBarButtonItem!
     
+    let maxCharacterCount = 140
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayData()
@@ -33,8 +35,7 @@ class TweetDetailViewController: UIViewController {
     }
     
     func configure(tweetData: TweetDataModel) {
-        tweetDataModel.user = tweetData.user
-        tweetDataModel.tweet = tweetData.tweet
+        tweetDataModel = tweetData
         print("データは\(tweetDataModel.user)と\(tweetDataModel.tweet)です")
     }
     
@@ -62,6 +63,7 @@ class TweetDetailViewController: UIViewController {
     @objc func cancelBarButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
 extension TweetDetailViewController: UITextViewDelegate {
@@ -69,5 +71,11 @@ extension TweetDetailViewController: UITextViewDelegate {
         let updaedtext = tweetTextView.text ?? ""
         saveData(with: updaedtext)
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            //入力された変更を行った場合の文字数を計算。
+            let newCharacterCount = textView.text.count - range.length + text.count
+            //140文字以下でtrueを返し、140文字超でfalseを返す (手抜き)
+            return (newCharacterCount <= maxCharacterCount)
+        }
 }
 

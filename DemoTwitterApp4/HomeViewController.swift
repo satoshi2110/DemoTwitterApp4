@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
         // 初期データを設定
         let newTweetData = TweetDataModel()
         newTweetData.user = "ユーザー名"
-        newTweetData.tweet = "新しいツイート"
+        newTweetData.tweet = ""
         tweetDetailViewController.configure(tweetData: newTweetData)
 
         navigationController?.pushViewController(tweetDetailViewController, animated: true)
@@ -106,7 +106,6 @@ extension HomeViewController: UITableViewDelegate {
         tweetDetailViewController.configure(tweetData: tweetData)
 //        選択したセルを消す
         tableView.deselectRow(at: indexPath, animated: true)
-//        移動
-        navigationController?.pushViewController(tweetDetailViewController, animated: true)
+
     }
 }
