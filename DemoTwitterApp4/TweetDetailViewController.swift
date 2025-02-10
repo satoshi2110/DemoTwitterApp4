@@ -36,7 +36,6 @@ class TweetDetailViewController: UIViewController {
     
     func configure(tweetData: TweetDataModel) {
         tweetDataModel = tweetData
-        print("データは\(tweetDataModel.user)と\(tweetDataModel.tweet)です")
     }
     
     func displayData() {
@@ -71,11 +70,14 @@ extension TweetDetailViewController: UITextViewDelegate {
         let updaedtext = tweetTextView.text ?? ""
         saveData(with: updaedtext)
     }
+    func isWithinCharacterLimit(textView: UITextView, range: NSRange, replacementText text: String, limit: Int) -> Bool {
+        let newCharacterCount = textView.text.count - range.length + text.count
+        return newCharacterCount <= limit
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            //入力された変更を行った場合の文字数を計算。
-            let newCharacterCount = textView.text.count - range.length + text.count
-            //140文字以下でtrueを返し、140文字超でfalseを返す (手抜き)
-            return (newCharacterCount <= maxCharacterCount)
-        }
+        return isWithinCharacterLimit(textView: textView, range: range, replacementText: text, limit: maxCharacterCount)
+    }
+
 }
 
